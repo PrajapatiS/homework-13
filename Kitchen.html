@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+        <script src="Kitchen1.js"></script>
+
+         <script type="menu-mustache-template" id="message-template">
+            <h2>Menu Item<h2>
+            <p>{{id}}</p>
+                <p>{{name}}</p>
+                <p>{{description}}</P>
+                <p>{{price}}</p>
+                <p>{{available}}</p>
+                <button>Place Order</button>
+                
+         </script>
+
+        <script type="menu-mustache-template" id="order-template">
+             <h3>Order Item<h3>
+             <p>{{table_id}}</p>
+             <ul>
+             {{#items}}
+                <li>{{name}}</li><li>{{price}}</li>
+                {{/items}}
+             </ul>
+            
+             <button>Complete</button>
+             
+         </script>
+    </head>  
+    <body>
+    <h1>Kitchen View</h1>
+                <a href="Menu.html">Customer View</a>
+
+   
+        <Main>
+
+            <ul>
+                
+            </ul>
+        </Main>
+       
+    </body> 
+
+</html>

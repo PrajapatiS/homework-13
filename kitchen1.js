@@ -1,5 +1,5 @@
 
-//Get all item using function menuAllDisplay()
+//Get all item show on browser using function menuAllDisplay()
 function menuAllDisplay(item){
     let template=document.querySelector('#message-template').innerHTML;
 
@@ -12,14 +12,15 @@ function menuAllDisplay(item){
     name:item.name,
     description:item.description,
     price:item.price,
-    available: item.available,
-    // if (item.available = 'true') {
-    //     return :'true';
-    // } else {
-    //     return:'false');
+    available: item.available
+    
 
-    });
-   let menu_id=item.id;
+});
+
+let button= base.querySelector('button');
+   button.addEventListener('click',function() {
+
+     let menu_id=item.id;
    let itemResp=new XMLHttpRequest();
 
    itemResp.open('post', 'http://tiy-28202.herokuapp.com/order');
@@ -32,16 +33,36 @@ function menuAllDisplay(item){
    menu_id:menu_id,
    }))
 
+ });
+    
+
   al.appendChild(base);
     }
     
 //Generate the bill of particular table_id
- function getItemOrderBill(item){
-     let itemName=document.querySelector('p');
-     itemName.textContent=itemName.name;
+   function getItemOrderBill(order){
 
-     let itemPrice=document.querySelector('p');
-     itemPrice.textContent=itemPrice.price;
+   let template=document.querySelector('#order-template').innerHTML;
+      let  parent=document.querySelector('ul');
+     //for(let i=0;i<order.length;i++){
+       
+        let orders=document.createElement('li') ;
+        //orders.textContent=or
+
+          console.log(order.items);
+               orders.innerHTML=Mustache.render(template,{
+               table_id:order.table_id,
+               items:order.items,
+               in_progress:order.in_progress
+            });
+
+           let button= orders.querySelector('button');
+           button.addEventListener('click',function(){
+           console.log('clicked');
+           });
+        parent.appendChild(orders);
+    // }
+     
  }
 
 
@@ -55,13 +76,13 @@ function getOrderByTableId()
        let orderResponse=JSON.parse(tblResponse.responseText);
        console.log(orderResponse);
      for(let i=0;i<orderResponse.length;i++){
-
+             getItemOrderBill(orderResponse[i]);
      }
-       getItemOrderBill(orderResponse[i]);
+      
    }) ;
    tblResponse.send();
 } 
-
+// getAllMenu() function will get all menu(food)
 function getAllMenu(){
     let item=new XMLHttpRequest();
     item.open('Get','http://tiy-28202.herokuapp.com/menu');
