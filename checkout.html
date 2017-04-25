@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="styleSheet" href="kitchen.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+        <script src="checkout.js"></script>
+        <script type="checkout-mustache-template" id="checkout-template">
+      
+      
+        {{# items}}
+        <li>{{name}} {{price}}</li>
+         {{/items}}
+        
+        </script>
+       
+    </head>
+    <body>
+        <h1>Restaurent Order Payment</h1>
+        <main>
+            <section>
+            
+                <label>Choose the Order
+                    <select id="table" onchange="changeEventHandler()">
+                        <option>select One</option>  
+                    </select>
+                </label>
+            </section>
+            <section>
+              
+            </section>
+           <section >
+                <nav>
+                    <ul>
+                       
+                        
+                    </ul>
+                    <p>Total:</p><p id="total"></p>
+                </nav>
+            </section> 
+              <section class="checkout">
+           <div>  
+            <span>Payment Information</span> 
+            <p id="result"></p>       
+           <input type="text" id="name1" placeholder="Name">
+            <input type="text" id="email1" placeholder="Email">
+            <input type="text" id="credit-card1" placeholder="Credit card">
+           <button onclick="validateCreditInfo()">Confirm</button>
+           </div>
+        </section>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+
+@import 'node_modules/foundation-sites/scss/foundation';
+
+@include foundation-global-styles;
+@include foundation-grid;
+$border-style:1px dashed black;
+
+body {
+    background-color: orange;
+    
+}
+
+
+section{
+    @include grid-row();
+}
+section.navigation{
+    ul{
+        padding-left: 0;
+    }
+    li{
+        @include grid-column(4);
+        text-align: top center;
+        border: $border-style;
+         padding: 100px 0;
+    }
+    
+    @media(max-width:600px){
+        li{
+            @include grid-row(9);
+        }
+    }
+}
